@@ -1,12 +1,13 @@
-# Deploying FastAPI app to Heroku
+# image-captioning-keras-resnet
+run 
+<br>
 
-FastAPI Tutorials
+<h1> first </h1>
+1] app.py for interactive gui but before running this you need model weights and vocab.npy which you can get by running .ipynb file or kaggle notebook
 
-A Simple API written using FastAPI framework, a python based framework to build production grade REST APIs.
+kaggle notebook : https://www.kaggle.com/programminghut/imagecaptioning
 
-The Procfile has the command to support the deployment of this Simple API to Heroku.
+<h1> second </h1>
+2] non_interative.py for cli predictions.
 
 
-| Code 💻 | Video 📺 | Article 📝 |
-|----------|-------------|------|
-| [Deploying fastapi app to Heroku](https://github.com/windson/fastapi/tree/fastapi-deploy-heroku) | [Deploy FastAPI on Heroku in just 6 minutes](http://bit.ly/3aO1g35) | [Create and Deploy FastAPI app to Heroku](http://bit.ly/2RD68jM) |
