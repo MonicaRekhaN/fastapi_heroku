@@ -1,6 +1,4 @@
 fastapi
 pillow
-python-multipart
-aiofiles
 tensorflow
 keras
