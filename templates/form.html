@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample Form</title>
+</head>
+<body>
+<!-- <form method="post">
+    <input type="number" name="num" value="1234"/>
+    <input type="submit">
+</form> -->
+
+
+<form action="/after" method='POST' enctype='multipart/form-data'>
+    <input type="file" name='file'>
+<input type="submit" name="btn" value='Predict Caption' class='btn btn-warning'> 
+</form>
+
+<p>Result: {{ result }}</p>
+
+</body>
+</html>
