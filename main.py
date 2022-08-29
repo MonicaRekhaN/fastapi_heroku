@@ -7,29 +7,22 @@ from fastapi.templating import Jinja2Templates
 from starlette.datastructures import URL
 import base64
 import pickle
-from flask import Flask, render_template, request
 from PIL import Image
 from io import BytesIO
 import glob
-from pickle import dump, load
+from pickle import load
 from time import time
 from keras.preprocessing import sequence
 from keras.models import Sequential
 from keras import optimizers
-from keras import Input, layers
-from keras.layers import LSTM, Embedding, TimeDistributed, Dense, RepeatVector, Activation, Flatten, Reshape, concatenate, Dropout, BatchNormalization
-from keras.applications.inception_v3 import InceptionV3
-from keras.preprocessing import image
+from keras import Input, layersfrom keras.preprocessing import image
 from keras.models import Model
 import cv2
 from base64 import b64encode
 import io
-from PIL import Image
-from base64 import b64encode
 from keras.models import load_model
 import numpy as np
 from keras.applications import ResNet50
-from keras.optimizers import Adam
 from keras.layers import Dense, Flatten,Input, Convolution2D, Dropout, LSTM, TimeDistributed, Embedding, Bidirectional, Activation, RepeatVector,Concatenate
 from keras.models import Sequential, Model
 from keras.layers import add
@@ -37,8 +30,6 @@ from keras.utils import np_utils
 from keras.preprocessing import image, sequence
 import cv2
 from keras_preprocessing.sequence import pad_sequences
-from pickle import load
-import tensorflow
 #from keras.preprocessing.image import load_img, img_to_array
 from keras.utils.image_utils import img_to_array,load_img
 
