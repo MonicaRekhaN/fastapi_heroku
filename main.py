@@ -15,7 +15,8 @@ from time import time
 from keras.preprocessing import sequence
 from keras.models import Sequential
 from keras import optimizers
-from keras import Input, layersfrom keras.preprocessing import image
+from keras import Input, layers
+from keras.preprocessing import image
 from keras.models import Model
 import cv2
 from base64 import b64encode
