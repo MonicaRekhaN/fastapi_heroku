@@ -119,6 +119,7 @@ async def form_post(request: Request,file: UploadFile = File(...)):
     model= await model
     image = encode(buf).reshape((1,2048))
     in_text = 'startseq'
+    print("starting")
     for i in range(max_length):
         sequence = [wordtoix[w] for w in in_text.split() if w in wordtoix]
         sequence = pad_sequences([sequence], maxlen=max_length)
@@ -132,7 +133,8 @@ async def form_post(request: Request,file: UploadFile = File(...)):
     final = in_text.split()
     final = final[1:-1]
     final = ' '.join(final)
-    return templates.TemplateResponse('after.html', context={'request': request,'data': final,'img_data' : uri})
+    print(final)
+    return templates.TemplateResponse('after.html', context={'request': request,'data': final})
 
 
  # at last, the bottom of the file/module
