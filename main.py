@@ -70,22 +70,22 @@ max_length = 34
 vocab_size = 1652
 embedding_dim = 200
 
-async def loadModel():
-    #Loading LSTM mddel
-    inputs1 = Input(shape=(2048,))
-    fe1 = Dropout(0.5)(inputs1)
-    fe2 = Dense(256, activation='relu')(fe1)
-    inputs2 = Input(shape=(max_length,))
-    se1 = Embedding(vocab_size, embedding_dim, mask_zero=True)(inputs2)
-    se2 = Dropout(0.5)(se1)
-    se3 = LSTM(256,return_sequences =True)(se2)
-    decoder1 = add([fe2, se3])
-    decoder2 = LSTM(256)(decoder1)
-    decoder3 = Dense(256, activation='relu')(decoder2)
-    outputs = Dense(vocab_size, activation='softmax')(decoder3)
-    model1 = Model(inputs=[inputs1, inputs2], outputs=outputs)
-    model1.load_weights('model.h5')
-    return model1
+# async def loadModel():
+#Loading LSTM mddel
+inputs1 = Input(shape=(2048,))
+fe1 = Dropout(0.5)(inputs1)
+fe2 = Dense(256, activation='relu')(fe1)
+inputs2 = Input(shape=(max_length,))
+se1 = Embedding(vocab_size, embedding_dim, mask_zero=True)(inputs2)
+se2 = Dropout(0.5)(se1)
+se3 = LSTM(256,return_sequences =True)(se2)
+decoder1 = add([fe2, se3])
+decoder2 = LSTM(256)(decoder1)
+decoder3 = Dense(256, activation='relu')(decoder2)
+outputs = Dense(vocab_size, activation='softmax')(decoder3)
+model = Model(inputs=[inputs1, inputs2], outputs=outputs)
+model.load_weights('model.h5')
+#     return model1
 # with open('model.pkl', "rb") as encoded_pickle:
 #     model = load(encoded_pickle)
 
@@ -101,8 +101,8 @@ async def root():
 @app.get("/form",response_class=HTMLResponse)
 def form_get(request: Request):
     print("testing")
-    global model
-    model=loadModel()
+#     global model
+#     model=loadModel()
     return templates.TemplateResponse('form.html', context={'request': request})
 
 @app.post("/after",response_class=HTMLResponse)
@@ -116,7 +116,7 @@ async def form_post(request: Request,file: UploadFile = File(...)):
     
     contents = file.file.read()
     base64_encoded_image = base64.b64encode(contents).decode("utf-8")
-    model= await model
+#     model= await model
     image = encode(buf).reshape((1,2048))
     in_text = 'startseq'
     print("starting")
