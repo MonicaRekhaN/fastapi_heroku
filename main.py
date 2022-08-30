@@ -1,4 +1,3 @@
-from pyexpat import model
 import uvicorn
 from fastapi import FastAPI,Request,Form,UploadFile,File
 from fastapi.responses import HTMLResponse
@@ -9,16 +8,13 @@ import base64
 import pickle
 from PIL import Image
 from io import BytesIO
-import glob
 from pickle import load
-from time import time
 from keras.preprocessing import sequence
 from keras.models import Sequential
 from keras import optimizers
 from keras import Input, layers
 from keras.preprocessing import image
 from keras.models import Model
-import cv2
 from base64 import b64encode
 import io
 from keras.models import load_model
@@ -29,9 +25,7 @@ from keras.models import Sequential, Model
 from keras.layers import add
 from keras.utils import np_utils
 from keras.preprocessing import image, sequence
-import cv2
 from keras_preprocessing.sequence import pad_sequences
-#from keras.preprocessing.image import load_img, img_to_array
 from keras.utils.image_utils import img_to_array,load_img
 
 app = FastAPI()
@@ -117,19 +111,11 @@ async def form_post(request: Request,file: UploadFile = File(...)):
     print(file.filename)
     
     print("in predict")
-    f = request.files['file1'].read()
+    f = file.file.read()
     buf = BytesIO(f)
-    npimg = np.fromstring(f,np.uint8)
-    img = cv2.imdecode(npimg,cv2.IMREAD_COLOR)
-    img = Image.fromarray(img.astype("uint8"))
-    rawBytes = io.BytesIO()
-    img.save(rawBytes, "JPEG")
-    rawBytes.seek(0)
-    img_base64 = base64.b64encode(rawBytes.getvalue()).decode('ascii')
-    mime = "image/jpeg"
-    uri = "data:%s;base64,%s"%(mime, img_base64)
-#contents = file.file.read()
-#base64_encoded_image = base64.b64encode(contents).decode("utf-8")
+    
+    contents = file.file.read()
+    base64_encoded_image = base64.b64encode(contents).decode("utf-8")
     model= await model
     image = encode(buf).reshape((1,2048))
     in_text = 'startseq'
