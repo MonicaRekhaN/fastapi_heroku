@@ -4,8 +4,8 @@ keras
 pillow
 python-multipart
 opencv-python
-gunicorn==19.9.0
 uvicorn
+gunicorn==19.9.0
 Jinja2
 numpy
 scipy
