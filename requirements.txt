@@ -5,7 +5,7 @@ pillow
 python-multipart
 opencv-python
 gunicorn==19.9.0
-unicorn
+uvicorn
 Jinja2
 numpy
 scipy
